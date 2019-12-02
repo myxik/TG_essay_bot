@@ -34,13 +34,15 @@ def with_syn(sentence):
 	alter=[]
 	for i in range( len(tagged) ):
 		if tagged[i][1][0]=='N':
-			alter.append(find_syn(tagged[i][0]))
+			alter.append(find_synn(tagged[i][0]))
+		elif tagged[i][1][0]=='J':
+			alter.append(find_synj(tagged[i][0]))
 		else:
 			alter.append(tagged[i][0])
 	alter = " ".join(alter)
 	return alter
 
-def find_syn(word):
+def find_synn(word):
 	try:
 		syn = wordnet.synsets(word,pos='n')
 		sim = 0
@@ -52,6 +54,31 @@ def find_syn(word):
 			if word==(temp.lemmas())[0].name():
 				syn.remove(temp)
 			elif sim>=0.5:
+				replacing=True
+				syn=temp
+				break
+			else:
+				syn.remove(temp)
+		if replacing==True:	
+			lem=syn.lemmas()
+			return lem[0].name()
+		else:
+			return word
+	except:
+		return word
+
+def find_synj(word):
+	try:
+		syn = wordnet.synsets(word,pos='a')
+		sim = 0
+		replacing=False
+		while sim<0.4 or len(syn)>0:
+			temp = random.choice(syn)
+			ts = wordnet.synset(temp.name())
+			sim = wordnet.synset(word+'.a.01').wup_similarity(ts)
+			if word==(temp.lemmas())[0].name():
+				syn.remove(temp)
+			elif sim>=0.4:
 				replacing=True
 				syn=temp
 				break
