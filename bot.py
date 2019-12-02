@@ -3,6 +3,8 @@ from telegram.ext.dispatcher import run_async
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from googletrans import Translator
 
+from paraphraser.paraphrase import paraphrase
+
 LANG = "en"
 
 
@@ -46,14 +48,14 @@ def start(update, context):
 
 
 @run_async
-def paraphrase(update, context):
+def paraphrase_(update, context):
     input = update.message.text
 
     if input == "this is a delicious coffee!":
         context.bot.send_message(chat_id=update.effective_chat.id, text="It's a lovely coffee!")
 
     input = Translator().translate(input, src=LANG, dest='en').text
-    output = Translator().translate(replace_with_syn(input), src='en', dest=LANG).text
+    output = Translator().translate(paraphrase(input), src='en', dest=LANG).text
     context.bot.send_message(chat_id=update.effective_chat.id, text=output)
 
 
@@ -62,7 +64,7 @@ if __name__ == '__main__':
     dispatcher = updater.dispatcher
 
     dispatcher.add_handler(CommandHandler('start', start))
-    dispatcher.add_handler(MessageHandler(Filters.text, paraphrase))
+    dispatcher.add_handler(MessageHandler(Filters.text, paraphrase_))
     updater.dispatcher.add_handler(CallbackQueryHandler(english, pattern="en"))
     updater.dispatcher.add_handler(CallbackQueryHandler(kazakh, pattern="kk"))
     updater.dispatcher.add_handler(CallbackQueryHandler(russian, pattern="ru"))
