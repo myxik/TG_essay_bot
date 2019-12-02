@@ -14,5 +14,5 @@ Link to a model:
 https://drive.google.com/file/d/18uOQsosF4uVGvUgp6pB4BKrQZ1FktlmM/view<br>
 Link to a pickle packages:
 https://drive.google.com/uc?id=1l2liCZqWX3EfYpzv9OmVatJAEISPFihW&export=download<br>
-#Algorithm of the paraphrasing <br>
+### Algorithm of the paraphrasing <br>
 Sentence -> LSTM-encoder->LSTM-decoder->Synonym changing->LSTM-encoder->LSTM-decoder -> Paraphrased sentence
