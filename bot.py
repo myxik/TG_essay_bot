@@ -2,12 +2,14 @@ from telegram.ext import Updater
 from telegram.ext import CommandHandler, MessageHandler, Filters
 from telegram.ext.dispatcher import run_async
 
+
 @run_async
 def start(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text="I'm a bot, please talk to me!")
 
+
 @run_async
-def echo(update, context):
+def paraphrase(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text=update.message.text)
 
 
@@ -16,10 +18,10 @@ if __name__ == '__main__':
     dispatcher = updater.dispatcher
 
     start_handler = CommandHandler('start', start)
-    echo_handler = MessageHandler(Filters.text, echo)
+    paraphrase_handler = MessageHandler(Filters.text, paraphrase)
 
     dispatcher.add_handler(start_handler)
-    dispatcher.add_handler(echo_handler)
+    dispatcher.add_handler(paraphrase_handler)
 
     updater.start_polling()
     # updater.idle()
