@@ -1,1 +1,0 @@
-print("Hello, my friend Sungbae, is gay")
