@@ -20,6 +20,8 @@ random.seed()
 '''
 replace_with_syn is the function of target
 '''
+def sentence_separator(inp):
+  return sen_token.tokenize(inp)
 def replace_with_syn(inp):
 	sentences = sen_token.tokenize(inp)
 	resen=[]
