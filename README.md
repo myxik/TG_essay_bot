@@ -10,3 +10,7 @@ TO RUN:
  after installing spacy:
  - python -m spacy download en_core_web_sm
  - python -m spacy download en
+Link to a model:
+https://drive.google.com/file/d/18uOQsosF4uVGvUgp6pB4BKrQZ1FktlmM/view
+Link to a pickle packages:
+https://drive.google.com/uc?id=1l2liCZqWX3EfYpzv9OmVatJAEISPFihW&export=download
