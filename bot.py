@@ -61,7 +61,7 @@ def paraphrase_(update, context):
 
 
 if __name__ == '__main__':
-    updater = Updater(token='915083921:AAGaVlWApWVybAD-7WJoatVUoL4vhT_cYFA', use_context=True)
+    updater = Updater(token='BOT_TOKEN', use_context=True)
     dispatcher = updater.dispatcher
 
     dispatcher.add_handler(CommandHandler('start', start))
