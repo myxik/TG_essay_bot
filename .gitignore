@@ -1,0 +1,11 @@
+paraphraser/
+annotated-ppdb-dev
+annotated-ppdb-test
+bilstmavg-4096-40.pickle
+model-171856.data-00000-of-00001
+model-171856.index
+model-171856.meta
+ngram-word-concat-40.pickle
+paragram_sl999_czeng.txt
+para-nmt-50m-small.txt
+tagger.pickle

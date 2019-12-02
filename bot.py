@@ -3,7 +3,7 @@ from telegram.ext.dispatcher import run_async
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from googletrans import Translator
 
-from paraphraser.paraphrase import paraphrase
+from paraphrase import paraphrase
 
 LANG = "en"
 
@@ -55,7 +55,8 @@ def paraphrase_(update, context):
         context.bot.send_message(chat_id=update.effective_chat.id, text="It's a lovely coffee!")
 
     input = Translator().translate(input, src=LANG, dest='en').text
-    output = Translator().translate(paraphrase(input), src='en', dest=LANG).text
+    parap = paraphrase(input)
+    output = Translator().translate(parap, src='en', dest=LANG).text
     context.bot.send_message(chat_id=update.effective_chat.id, text=output)
 
 
