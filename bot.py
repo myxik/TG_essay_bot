@@ -1,11 +1,12 @@
 from telegram.ext import Updater
 from telegram.ext import CommandHandler, MessageHandler, Filters
+from telegram.ext.dispatcher import run_async
 
-
+@run_async
 def start(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text="I'm a bot, please talk to me!")
 
-
+@run_async
 def echo(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text=update.message.text)
 
