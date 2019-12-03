@@ -5,7 +5,7 @@ For MLH local hack day
  - implementation: telegram bot
 
 TO RUN:
- - installing spacy, tensorflow, python
+ - installing spacy, tensorflow(must be 1.x instead of 2.x), python
  - run paraphrase.py it will ask for input or you can simply use as a function, docstring is listed
  after installing spacy:
  - python -m spacy download en_core_web_sm
